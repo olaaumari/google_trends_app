@@ -16,7 +16,8 @@ def read_data(engine, keyword, from_date, to_date):
         data = pd.read_sql(query, con=connection)
     if not data.empty:
         data['date'] = pd.to_datetime(data['date'])
-    return data
+        
+    return data.drop_duplicates(subset=['date'], keep='first')
 
 def ensure_data_for_keyword(engine, keyword, from_date, to_date):
     """
