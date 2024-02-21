@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-from feature_engineering import process_keyword_series
 
 # Chemin de la base de données SQLite
 DATABASE_FILE = 'google_trends_data.db'
