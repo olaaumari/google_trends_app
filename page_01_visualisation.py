@@ -28,6 +28,9 @@ def visualize_trends():
                 with st.spinner(f'Fetching data for {keyword}...'):
                     ingest_data_for_keywords([keyword], from_date.strftime('%Y-%m-%d'), to_date.strftime('%Y-%m-%d'))
                 data = read_data(engine, keyword, from_date, to_date)
+                print(from_date)
+                print(to_date)
+                print(data)
                 if not data.empty:
                     fig.add_trace(go.Scatter(x=data['date'], y=data['value'], mode='lines', name=keyword))
         st.session_state.selected_keywords = keywords

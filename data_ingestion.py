@@ -62,14 +62,27 @@ def create_table(engine):
 
 def insert_data(engine, data):
     """
-    Insère les données de tendance dans la base de données.
-
+    Inserts trend data into the database and removes duplicates based on date and keyword.
+    
     Parameters:
-    - engine: L'instance de connexion à la base de données.
-    - data (DataFrame): Les données de tendance à insérer.
+        engine: The database engine connection instance.
+        data (DataFrame): The trends data to insert.
     """
     if not data.empty:
+        # Insert all data
         data.to_sql('google_trends_data', con=engine, if_exists='append', index=False, method='multi')
+        
+        # Remove duplicates, keeping the first occurrence for each date and keyword combination
+        with engine.connect() as connection:
+            delete_duplicates_query = text("""
+                DELETE FROM google_trends_data
+                WHERE rowid NOT IN (
+                    SELECT MIN(rowid)
+                    FROM google_trends_data
+                    GROUP BY date, keyword
+                )
+            """)
+            connection.execute(delete_duplicates_query)
 
 
 def ingest_data_for_keywords(keywords, from_date, to_date):
