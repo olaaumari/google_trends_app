@@ -1,7 +1,20 @@
 import pandas as pd
-
+import streamlit as st
 from data_ingestion import ingest_data_for_keywords
+import sqlalchemy
+from data_ingestion import connect_db
 
+DATABASE_FILE = 'google_trends_data.db'
+
+
+def get_connection():
+    if 'db_conn' not in st.session_state:
+        engine = connect_db(DATABASE_FILE)
+        st.session_state['db_conn'] = engine
+    return st.session_state['db_conn']
+
+
+@st.cache_data(hash_funcs={sqlalchemy.engine.base.Engine: id})
 def read_data(engine, keyword, from_date, to_date):
     """
     Lit les données de la base pour un mot-clé spécifique et une plage de dates.
