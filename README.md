@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This project is a Streamlit application for analyzing and visualizing Google Trends data. It offers an intuitive interface for users to explore search trends over time, providing insights into the popularity of keywords. The application includes features for visualizing trends, ingesting Google Trends data into a SQLite database, and planned functionalities for model training.
+This project is a Streamlit application for analyzing and visualizing Google Trends data. It offers an intuitive interface for users to explore search trends over time, providing insights into the popularity of keywords. The application includes features for visualizing trends, ingesting Google Trends data into a SQLite database, and planned functionalities for model training. You can access the application [here](https://trendsapp.streamlit.app/).
 
 ## Prerequisites
 
