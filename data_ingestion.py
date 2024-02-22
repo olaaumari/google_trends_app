@@ -51,9 +51,10 @@ def create_table(engine):
     """
     create_table_query = text("""
     CREATE TABLE IF NOT EXISTS google_trends_data (
-        date DATE PRIMARY KEY,
+        date DATE,
         keyword VARCHAR(255),
-        value INTEGER
+        value INTEGER,
+        PRIMARY KEY (date, keyword)
     );
     """)
     with engine.connect() as connection:
