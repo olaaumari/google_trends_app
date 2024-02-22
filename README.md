@@ -18,7 +18,7 @@ To set up and run the project, follow these steps:
 
 1. Clone the project repository:
    ```
-   git clone [https://your_repo/google_trends_streamlit_project.git](https://github.com/olaaumari/google_trends_app.git)
+   git clone https://your_repo/google_trends_streamlit_project.git
    ```
 2. Navigate to the project directory:
    ```
