@@ -3,9 +3,9 @@ import pandas as pd
 from sqlalchemy import create_engine, text
 import datetime
 
-
 # Chemin par défaut de la base de données SQLite
 DATABASE_FILE = 'google_trends_data.db'
+
 
 def connect_db(file_path=DATABASE_FILE):
     """
